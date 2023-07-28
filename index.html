@@ -24,10 +24,14 @@
     li {
         list-style: none;
     }
+    /* img{
+        width: 50%;
+        margin-left: 124px;
+    } */
 </style>
 
 <body class="text-white" style="background-color: #84bdf1e9;">
-    <div class="container mt-5 ps-5 pb-2 pe-5 pt-4 text-black"
+    <div class="container mt-4 ps-5 pb-2 pe-5 pt-4 text-black"
         style="border-radius: 15px; width: 550px; background-color: #ffffff66;">
         <h1 class=" text-center mt-2">Weather Forecast Report</h1>
         <form>
@@ -37,6 +41,9 @@
             </div>
             <button type="button" onclick="accessData()" class="btn btn-primary">Check</button>
         </form>
+        <!-- <div>
+            <img src="./images/w7.png" alt="">
+        </div> -->
         <div id="result" class="">
 
         </div>
@@ -54,7 +61,10 @@
         function displayData(wthrData) {
             city = loc
             weather = wthrData.weather[0].description
-            temp = parseInt((wthrData.main.temp - 32) * (5 / 9))
+            // temp = parseInt((wthrData.main.temp - 32) * (5 / 9))
+
+            temp = Math.floor(wthrData.main.temp - 273.15)
+
             result.innerHTML += `
            <center>
                 <div style="width: 18rem;">
@@ -64,7 +74,7 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="fw-bold">${weather}</li>
-                        <li class="fw-bold">${temp}<sup>0</sup>c</li>
+                        <li class="fw-bold">${temp}<sup>0</sup>C</li>
                     </ul>
                     </div>
             </center>`
